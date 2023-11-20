@@ -13,13 +13,13 @@ This Python script performs security assessments on an AWS environment, focusing
 
 ## How to Use
 
-1. Clone the repository or download the script (`security_assessment.py`).
+1. Clone the repository.
 
 2. Configure AWS credentials:
 
     Ensure that your AWS credentials are properly configured.
 
-4. Activate virtual env:
+3. Activate virtual env:
 
     ```bash
     source env/bin/activate
