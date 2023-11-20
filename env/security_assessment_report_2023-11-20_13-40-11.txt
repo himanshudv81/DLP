@@ -1,0 +1,24 @@
+IAM Role Security Assessment:
+
+Assessing IAM user: aws-cli
+Attached Policies: AdministratorAccess
+MFA not enforced for privileged user. Enable MFA for enhanced security.
+No inline policies.
+
+S3 Security Assessment:
+
+Assessing S3 bucket: sample-storage-test-bucket-n26
+Bucket ACL:
+{'Grantee': {'ID': '08eeb95ec2ac107fa5ac2a64e1fde7151f17c77bc06b9b737dfa2626520f52fc', 'Type': 'CanonicalUser'}, 'Permission': 'FULL_CONTROL'}
+No bucket policy.
+Server-side encryption is enabled.
+
+EC2 Security Assessment:
+
+Assessing Security Group: default
+Ingress Rules:
+{'IpProtocol': '-1', 'IpRanges': [], 'Ipv6Ranges': [], 'PrefixListIds': [], 'UserIdGroupPairs': [{'GroupId': 'sg-0236caf70699f1644', 'UserId': '481055691332'}]}
+
+Egress Rules:
+{'IpProtocol': '-1', 'IpRanges': [{'CidrIp': '0.0.0.0/0'}], 'Ipv6Ranges': [], 'PrefixListIds': [], 'UserIdGroupPairs': []}
+Overly permissive egress rule found. Review and tighten security group rules for least privilege.
