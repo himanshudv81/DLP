@@ -1,0 +1,47 @@
+IAM Role Security Assessment:
+
+Assessing IAM user: aws-cli
+Attached Policies: AdministratorAccess
+MFA not enforced for Administrator. Enable MFA for enhanced security if user has console access.
+No inline policies.
+
+Assessing IAM user: dlp-test2
+No attached policies.
+Inline Policies: ec2all
+Overly permissive policy found in inline policy 'ec2all'. Review and tighten policy for least privilege.
+
+S3 Security Assessment:
+
+Assessing S3 bucket: aws-cloudtrail-logs-481055691332-5f4bd6eb
+Bucket ACL:
+{'Grantee': {'ID': '08eeb95ec2ac107fa5ac2a64e1fde7151f17c77bc06b9b737dfa2626520f52fc', 'Type': 'CanonicalUser'}, 'Permission': 'FULL_CONTROL'}
+Bucket Policy:
+{"Version":"2012-10-17","Statement":[{"Sid":"AWSCloudTrailAclCheck20150319","Effect":"Allow","Principal":{"Service":"cloudtrail.amazonaws.com"},"Action":"s3:GetBucketAcl","Resource":"arn:aws:s3:::aws-cloudtrail-logs-481055691332-5f4bd6eb","Condition":{"StringEquals":{"AWS:SourceArn":"arn:aws:cloudtrail:eu-central-1:481055691332:trail/management-events"}}},{"Sid":"AWSCloudTrailWrite20150319","Effect":"Allow","Principal":{"Service":"cloudtrail.amazonaws.com"},"Action":"s3:PutObject","Resource":"arn:aws:s3:::aws-cloudtrail-logs-481055691332-5f4bd6eb/AWSLogs/481055691332/*","Condition":{"StringEquals":{"s3:x-amz-acl":"bucket-owner-full-control","AWS:SourceArn":"arn:aws:cloudtrail:eu-central-1:481055691332:trail/management-events"}}}]}
+Server-side encryption is enabled.
+
+Assessing S3 bucket: sample-storage-test-bucket-n26
+Bucket ACL:
+{'Grantee': {'ID': '08eeb95ec2ac107fa5ac2a64e1fde7151f17c77bc06b9b737dfa2626520f52fc', 'Type': 'CanonicalUser'}, 'Permission': 'FULL_CONTROL'}
+No bucket policy.
+Server-side encryption is enabled.
+
+EC2 Security Assessment:
+
+Assessing Security Group: dlptestsg
+Ingress Rules:
+{'FromPort': 22, 'IpProtocol': 'tcp', 'IpRanges': [{'CidrIp': '88.209.32.75/32'}], 'Ipv6Ranges': [], 'PrefixListIds': [], 'ToPort': 22, 'UserIdGroupPairs': []}
+Overly permissive ingress rule found. Review and tighten security group rules for least privilege.
+{'FromPort': 25, 'IpProtocol': 'tcp', 'IpRanges': [{'CidrIp': '0.0.0.0/0'}], 'Ipv6Ranges': [], 'PrefixListIds': [], 'ToPort': 25, 'UserIdGroupPairs': []}
+Overly permissive ingress rule found. Review and tighten security group rules for least privilege.
+
+Egress Rules:
+{'IpProtocol': '-1', 'IpRanges': [{'CidrIp': '0.0.0.0/0'}], 'Ipv6Ranges': [], 'PrefixListIds': [], 'UserIdGroupPairs': []}
+Overly permissive egress rule found. Review and tighten security group rules for least privilege.
+
+Assessing Security Group: default
+Ingress Rules:
+{'IpProtocol': '-1', 'IpRanges': [], 'Ipv6Ranges': [], 'PrefixListIds': [], 'UserIdGroupPairs': [{'GroupId': 'sg-0236caf70699f1644', 'UserId': '481055691332'}]}
+
+Egress Rules:
+{'IpProtocol': '-1', 'IpRanges': [{'CidrIp': '0.0.0.0/0'}], 'Ipv6Ranges': [], 'PrefixListIds': [], 'UserIdGroupPairs': []}
+Overly permissive egress rule found. Review and tighten security group rules for least privilege.

@@ -10,7 +10,6 @@ def check_iam(security_reports):
 
         # IAM users available in an AWS Account to variable users
         users = iam_client.list_users()['Users']
-
         for user in users:
             user_name = user['UserName']
             security_reports.write(f"\nAssessing IAM user: {user_name}\n")
